@@ -6,6 +6,9 @@ import type { AppProps } from "next/app";
 
 import "../styles/globals.css";
 
+{
+  /* <Provider store={store}></Provider> */
+}
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
