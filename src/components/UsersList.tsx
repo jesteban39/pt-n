@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import {
+import Link from "next/link";
+/* import {
   List,
   ListItemText,
   ListItemAvatar,
   Avatar,
   ListItem,
-} from "@mui/material";
+} from "@mui/material"; */
 
-import type { user } from "types";
+import type { user } from "../types";
 import { getUsersList } from "../store/slices/getUsersList";
-import "./usersList.css";
 
 const UsersList = () => {
   const [userName, setUserName] = useState("");
@@ -46,9 +45,11 @@ const UsersList = () => {
       </form>
       <section className="list">
         {usersList.map((user) => (
-          <Link key={user.id} to={`/user/${user.login}`}>
-            <img width="50px" src={user.avatar_url} />
-            <span>{user.login}</span>
+          <Link key={user.id} href={`/user/${user.login}`}>
+            <div>
+              <img width="50px" src={user.avatar_url} />
+              <span>{user.login}</span>
+            </div>
           </Link>
         ))}
       </section>

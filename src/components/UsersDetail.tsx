@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { List, ListItemText } from "@mui/material";
+import Link from "next/link";
+//import { List, ListItemText } from "@mui/material";
 
-import type { userDetail } from "types";
+import type { userDetail } from "../types";
 import { getUserDetail } from "../store/slices/getUserDetail";
-import "./userDetail.css";
 
-const UsersList = (props: { match: { params: { userName: string } } }) => {
+
+const UsersDetail = (props: { match: { params: { userName: string } } }) => {
   const dispatch = useDispatch();
   const user = useSelector(
     (state: { userDetail: userDetail }) => state.userDetail
   );
   useEffect(() => {
-    console.log(props.match.params.userName);
     dispatch(getUserDetail(props.match.params.userName));
   }, []);
 
@@ -26,24 +25,25 @@ const UsersList = (props: { match: { params: { userName: string } } }) => {
       </div>
       <div>
         <h2>Repositories</h2>
-        <List disablePadding>
-          {user.repos.map((repo) => (
-            <ListItemText primary={repo.name} />
-          ))}
-        </List>
+        <div>
+          {user.repos.map((repo) => {
+            return <span>{repo.name}</span>;
+          })}
+        </div>
       </div>
 
       <div>
         <h2>Organizations</h2>
-        <List>
+        <div>
           {user.orgs.map((org) => (
-            <ListItemText>
-              <ListItemText primary={org.login} secondary={org.description} />
-            </ListItemText>
+            <p>
+              <span>{org.login}</span>
+              <span>{org.description}</span>
+            </p>
           ))}
-        </List>
+        </div>
       </div>
     </article>
   );
 };
-export default UsersList;
+export default UsersDetail;
