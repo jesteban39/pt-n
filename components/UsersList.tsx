@@ -10,13 +10,16 @@ import Link from "next/link";
 } from "@mui/material"; */
 
 import type { user } from "../types";
+import { getUserDetail } from "../store/slices/getUserDetail";
 import { getUsersList } from "../store/slices/getUsersList";
 
 const UsersList = () => {
   const [userName, setUserName] = useState("");
   const dispatch = useDispatch();
 
-  //useSelector((s: any) => console.log(s));
+  const handleDetail = (userLogin: string) => {
+    dispatch(getUserDetail(userLogin));
+  };
 
   const usersList = useSelector(
     (state: { usersList: user[] }) => state.usersList
@@ -45,8 +48,8 @@ const UsersList = () => {
       </form>
       <section className="list">
         {usersList.map((user) => (
-          <Link key={user.id} href={`/user/${user.login}`}>
-            <div>
+          <Link key={user.id} href={`/users/${user.login}`}>
+            <div onClick={() => handleDetail(user.login)}>
               <img width="50px" src={user.avatar_url} />
               <span>{user.login}</span>
             </div>

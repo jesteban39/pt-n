@@ -1,21 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import Link from "next/link";
-//import { List, ListItemText } from "@mui/material";
-
+import React from "react";
 import type { userDetail } from "../types";
-import { getUserDetail } from "../store/slices/getUserDetail";
 
-
-const UsersDetail = (props: { match: { params: { userName: string } } }) => {
-  const dispatch = useDispatch();
-  const user = useSelector(
-    (state: { userDetail: userDetail }) => state.userDetail
-  );
-  useEffect(() => {
-    dispatch(getUserDetail(props.match.params.userName));
-  }, []);
-
+const UsersDetail = ({ user }: { user: userDetail }) => {
   return (
     <article className="container">
       <div>

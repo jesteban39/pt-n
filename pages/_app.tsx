@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 
-import store from "../src/store";
+import store from "../store";
 
 import type { AppProps } from "next/app";
 

@@ -25,7 +25,6 @@ export const getUserDetail = createAsyncThunk(
       repos: resRepos.data,
       orgs: resOrgs.data,
     };
-    console.log(user);
     return user as userDetail;
   }
 );
