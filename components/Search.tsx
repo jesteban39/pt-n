@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
- 
-import {
-  List,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-  ListItem,
-  Button
-} from "@mui/material"; 
 
+import { IconButton, Paper, InputBase } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { getUsersList } from "../store/slices/getUsersList";
 
@@ -26,16 +19,17 @@ const Search = () => {
     dispatch(getUsersList(userName));
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="search"
+    <Paper component="form" onSubmit={handleSubmit}>
+      <InputBase
         onChange={handleChange}
         value={userName}
-        placeholder="user name (ejm: leo325)"
+        autoComplete="on"
+        placeholder="Search User (ej: leo325)"
       />
-      <input type="submit" value="Search" />
-      <Button>Search</Button>
-    </form>
+      <IconButton onSubmit={handleSubmit} type="submit">
+        <SearchIcon />
+      </IconButton>
+    </Paper>
   );
 };
 export default Search;
