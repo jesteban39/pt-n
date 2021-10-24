@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
-/* import {
+/* 
+import {
   List,
   ListItemText,
   ListItemAvatar,
   Avatar,
   ListItem,
-} from "@mui/material"; */
+} from "@mui/material"; 
+*/
 
 import type { user } from "../types";
-import { getUserDetail } from "../store/slices/getUserDetail";
 import { getUsersList } from "../store/slices/getUsersList";
 
 const UsersList = () => {
   const [userName, setUserName] = useState("");
   const dispatch = useDispatch();
-
-  const handleDetail = (userLogin: string) => {
-    dispatch(getUserDetail(userLogin));
-  };
-
   const usersList = useSelector(
     (state: { usersList: user[] }) => state.usersList
   );
@@ -49,7 +45,7 @@ const UsersList = () => {
       <section className="list">
         {usersList.map((user) => (
           <Link key={user.id} href={`/users/${user.login}`}>
-            <div onClick={() => handleDetail(user.login)}>
+            <div>
               <img width="50px" src={user.avatar_url} />
               <span>{user.login}</span>
             </div>
