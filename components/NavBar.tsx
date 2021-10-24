@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div>
+    <nav>
       <Link href="/">Home</Link>
-    </div>
+    </nav>
   );
 };
 export default NavBar;
