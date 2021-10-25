@@ -1,10 +1,10 @@
 import Link from "next/link";
-
+import { AppBar } from "@mui/material";
 const NavBar = () => {
   return (
-    <nav>
+    <AppBar>
       <Link href="/">Home</Link>
-    </nav>
+    </AppBar>
   );
 };
 export default NavBar;
