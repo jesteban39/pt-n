@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { IconButton, Paper, InputBase } from "@mui/material";
-//import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { getUsersList } from "../store/slices/getUsersList";
 
@@ -26,7 +26,7 @@ const Search = () => {
         placeholder="Search User (ej: leo325)"
       />
       <IconButton onSubmit={handleSubmit} type="submit">
-        {/* <SearchIcon /> */}
+        <SearchIcon /> 
       </IconButton>
       <div></div>
     </Paper>
