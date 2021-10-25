@@ -20,7 +20,12 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@mui/styled-engine": [
+        "./node_modules/@mui/styled-engine-sc"
+      ] // this mapping is relative to "baseUrl"
+    }
   },
   "include": [
     "next-env.d.ts",

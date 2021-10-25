@@ -28,6 +28,7 @@ const Search = () => {
       <IconButton onSubmit={handleSubmit} type="submit">
         {/* <SearchIcon /> */}
       </IconButton>
+      <div></div>
     </Paper>
   );
 };

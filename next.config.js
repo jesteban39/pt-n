@@ -1,20 +1,15 @@
-/** @type {import('next').NextConfig} */
-const path = require("path");
+const withTM = require("next-transpile-modules")([
+  "@mui/material",
+  "@mui/system",
+]); // pass the modules you would like to see transpiled
 
-module.exports = {
+module.exports = withTM({
   reactStrictMode: true,
-  /* webpack: (config, options) => {
-    config.resolve.alias["@mui/styled-engine"] = path.resolve(
-      __dirname,
-      "@mui/styled-engine-sc"
-    );
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@mui/styled-engine": "@mui/styled-engine-sc",
+    };
     return config;
-  }, */
-};
-
-/* 
-"paths": {
-  "@mui/styled-engine": [
-    "./node_modules/@mui/styled-engine-sc"
-  ]
-}, */
+  },
+});
